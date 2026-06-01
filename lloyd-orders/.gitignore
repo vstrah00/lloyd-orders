@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+.env
+*.log
+backend/data/
+backend/*.log
+data/
+*.sqlite
+*.sqlite-*
+npm-debug.log*
