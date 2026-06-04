@@ -10,6 +10,7 @@ type OrderRow = {
   timestamp: string;
   items: string;
   printed_at: string | null;
+  waiter_name: string | null;
   status: OrderStatus;
 };
 
@@ -26,6 +27,7 @@ function toOrder(row: OrderRow): Order {
   return {
     id: row.id,
     tableLabel: String(row.table_number),
+    waiterName: row.waiter_name ?? undefined,
     timestamp: row.timestamp,
     items: parsedItems.map((item, index) => ({
       name: typeof item.name === "string" ? item.name : "Unknown item",
@@ -60,8 +62,8 @@ export function createOrder(input: CreateOrderInput): Order {
   const timestamp = new Date().toISOString();
   const items = input.note ? [...input.items, createNoteItem(input.note)] : input.items;
   const result = db
-    .prepare("INSERT INTO orders (table_number, timestamp, items, status) VALUES (?, ?, ?, 'new')")
-    .run(input.tableLabel, timestamp, JSON.stringify(items));
+    .prepare("INSERT INTO orders (table_number, waiter_name, timestamp, items, status) VALUES (?, ?, ?, ?, 'new')")
+    .run(input.tableLabel, input.waiterName ?? null, timestamp, JSON.stringify(items));
 
   const row = db.prepare("SELECT * FROM orders WHERE id = ?").get(result.lastInsertRowid) as OrderRow;
   return toOrder(row);

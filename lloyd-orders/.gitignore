@@ -4,6 +4,8 @@ dist/
 *.tsbuildinfo
 .env
 *.log
+.runtime/
+**/.runtime/
 backend/data/
 backend/*.log
 data/

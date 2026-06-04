@@ -10,6 +10,7 @@ export type OrderItem = {
 export type Order = {
   id: number;
   tableLabel: string;
+  waiterName?: string;
   timestamp: string;
   items: OrderItem[];
   note?: string;

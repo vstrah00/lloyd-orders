@@ -12,6 +12,7 @@ export function validateCreateOrder(payload: unknown): CreateOrderInput {
   }
 
   const note = typeof input.note === "string" ? input.note.trim() : "";
+  const waiterName = typeof input.waiterName === "string" ? input.waiterName.trim() : "";
 
   if (!Array.isArray(input.items) || input.items.length === 0) {
     throw new Error("At least one item is required");
@@ -55,6 +56,7 @@ export function validateCreateOrder(payload: unknown): CreateOrderInput {
   return {
     tableLabel: tableLabel.trim(),
     items,
-    ...(note ? { note } : {})
+    ...(note ? { note } : {}),
+    ...(waiterName ? { waiterName } : {})
   };
 }

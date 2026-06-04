@@ -3,7 +3,10 @@ import cors from "cors";
 import express from "express";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
+import { categoriesRouter } from "./routes/categories.js";
 import { createOrdersRouter } from "./routes/orders.js";
+import { productsRouter } from "./routes/products.js";
+import { waitersRouter } from "./routes/waiters.js";
 import { registerSocketHandlers } from "./socket/index.js";
 
 const port = Number(process.env.PORT ?? 4000);
@@ -43,6 +46,9 @@ app.get("/health", (_req, res) => {
 });
 
 app.use("/orders", createOrdersRouter(io));
+app.use("/categories", categoriesRouter);
+app.use("/products", productsRouter);
+app.use("/waiters", waitersRouter);
 
 registerSocketHandlers(io);
 

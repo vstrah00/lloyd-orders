@@ -27,6 +27,7 @@ export function OrderCard({ order, onComplete, completing }: OrderCardProps) {
         <div>
           <p className="text-sm font-black uppercase text-lime">Table</p>
           <h2 className="text-5xl font-black leading-none text-white">{order.tableLabel}</h2>
+          {order.waiterName ? <p className="mt-1 text-xs font-bold uppercase text-white/45">by {order.waiterName}</p> : null}
         </div>
         <time className="rounded bg-lime px-3 py-2 text-2xl font-black text-ink" dateTime={order.timestamp}>
           {formatTime(order.timestamp)}

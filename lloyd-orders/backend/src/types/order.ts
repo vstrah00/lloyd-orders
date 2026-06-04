@@ -12,6 +12,7 @@ export type OrderItem = {
 export type Order = {
   id: number;
   tableLabel: string;
+  waiterName?: string;
   timestamp: string;
   items: OrderItem[];
   note?: string;
@@ -23,4 +24,5 @@ export type CreateOrderInput = {
   tableLabel: string;
   items: OrderItem[];
   note?: string;
+  waiterName?: string;
 };

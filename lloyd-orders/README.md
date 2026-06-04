@@ -36,6 +36,7 @@ Open:
 
 - Waiter: `http://localhost:3000/waiter`
 - Bar: `http://localhost:3000/bar`
+- Products admin: `http://localhost:3000/admin/products`
 
 ### Print agent
 
@@ -126,6 +127,7 @@ On the Windows laptop connected to the receipt printer, set:
 BACKEND_URL=https://your-railway-backend.up.railway.app
 PRINTER_NAME=Your Exact Windows Printer Name
 PRINT_POLL_INTERVAL_MS=10000
+SUMATRA_PDF_PATH=C:\Users\kompj\AppData\Local\SumatraPDF\SumatraPDF.exe
 ```
 
 Then run:
@@ -136,6 +138,22 @@ npm run dev
 ```
 
 Stop the print agent after closing to keep backend usage low.
+
+For easier daily use on Windows, double-click:
+
+```text
+lloyd-orders/print-agent/lloyd-print-control.bat
+```
+
+The control app lets you:
+
+- save backend/printer/SumatraPDF settings
+- start the print agent
+- stop the print agent
+- run a test print
+- open agent logs
+
+Use this instead of asking bar staff to run terminal commands.
 
 ## Phone testing
 
@@ -158,5 +176,7 @@ This phase only supports:
 - completion status
 - automatic receipt printing
 - SQLite order storage
+- SQLite product storage
+- product admin page
 
 No payments, fiscalization, inventory, accounts, roles, reports, analytics, or multi-location support.

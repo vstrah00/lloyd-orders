@@ -9,6 +9,7 @@ const execFileAsync = promisify(execFile);
 
 export async function printReceipt(receiptHtml: string) {
   const printerName = process.env.PRINTER_NAME ?? "SLK-TS400";
+  const sumatraPath = process.env.SUMATRA_PDF_PATH ?? "C:\\Users\\kompj\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe";
 
   const htmlPath = path.join(os.tmpdir(), `lloyd-order-${Date.now()}.html`);
   const pdfPath = path.join(os.tmpdir(), `lloyd-order-${Date.now()}.pdf`);
@@ -34,7 +35,7 @@ export async function printReceipt(receiptHtml: string) {
 
   await browser.close();
 
-  await execFileAsync("C:\\Users\\kompj\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe", [
+  await execFileAsync(sumatraPath, [
     "-print-to",
     printerName,
     "-silent",

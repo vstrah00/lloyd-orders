@@ -79,6 +79,14 @@ export function formatReceipt(order: Order) {
     margin-bottom: 5mm;
   }
 
+  .meta {
+    text-align: center;
+    font-size: 10px;
+    font-weight: normal;
+    margin-top: -3mm;
+    margin-bottom: 4mm;
+  }
+
   /* categories */
   h2 {
     font-size: 18px;      /* was 24-27 */
@@ -108,6 +116,7 @@ export function formatReceipt(order: Order) {
 <body>
   <h1>TABLE ${sanitize(order.tableLabel)}</h1>
   <div class="time">${formatTime(order.timestamp)}</div>
+  ${order.waiterName ? `<div class="meta">by ${sanitize(order.waiterName)}</div>` : ""}
 
   ${noteItems.length ? `<div class="note">NOTE: ${sanitize(noteItems.map((item) => item.name.replace(/^NOTE:\\s*/, "")).join(" "))}</div>` : ""}
 

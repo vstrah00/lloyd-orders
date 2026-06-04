@@ -11,6 +11,9 @@ export default function HomePage() {
         <Link className="rounded-lg border-2 border-ink px-5 py-4 text-center font-bold" href="/bar">
           Bar
         </Link>
+        <Link className="rounded-lg border-2 border-ink px-5 py-4 text-center font-bold" href="/admin/products">
+          Products Admin
+        </Link>
       </div>
     </main>
   );
